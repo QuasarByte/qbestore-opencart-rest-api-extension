@@ -28,7 +28,7 @@ class ControllerAPIQuasarByteOCRestV1Setting extends QuasarByteOCRestController
         }
 
         $this->response->addHeader('Content-Type: application/json');
-        $this->response->setOutput(json_encode($json));
+        $this->response->setOutput(json_encode((Object)$json));
     }
 
     public function findByKeys()
@@ -60,7 +60,7 @@ class ControllerAPIQuasarByteOCRestV1Setting extends QuasarByteOCRestController
         }
 
         $this->response->addHeader('Content-Type: application/json');
-        $this->response->setOutput(json_encode($json));
+        $this->response->setOutput(json_encode((Object)$json));
     }
 
     public function getSettingPermissionKeys()
@@ -315,7 +315,7 @@ class ControllerAPIQuasarByteOCRestV1Setting extends QuasarByteOCRestController
         }
 
         foreach ($settingKeys as $settingKey) {
-            $this->model_quasarbyte_ocrest_v1_setting->saveSetting($settingKey['code'], $settingKey['key'], $settingKey['value'], $storeId);
+            $this->model_quasarbyte_ocrest_v1_setting->saveSetting($settingKey['code'], $settingKey['key'], $settingKey['value'], $storeId, $settingKey['serializationType']);
         }
     }
 }

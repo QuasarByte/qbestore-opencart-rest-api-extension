@@ -259,7 +259,7 @@ class ModelQuasarByteOCRestV1Setting extends Model
 
     public function saveSetting($code, $key, $value = '', $storeId = 0, $serializationType = "JSONENCODE")
     {
-        if ($this->existsSetting($key, $storeId)) {
+        if ($this->existsSetting($code, $key, $storeId)) {
             if (!is_array($value)) {
                 $this->db->query("UPDATE " . DB_PREFIX . "setting SET `value` = '" . $this->db->escape($value) . "', serialized = '0'  WHERE `code` = '" . $this->db->escape($code) . "' AND `key` = '" . $this->db->escape($key) . "' AND store_id = '" . (int)$storeId . "'");
             } else {
